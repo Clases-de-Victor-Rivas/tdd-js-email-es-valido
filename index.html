@@ -31,6 +31,9 @@
             || email.includes(".@") // Contiene .@
             ) return false
         
+        // Solución a punto tras la arroba
+        let subcadenas=email.split("@")
+        if( !subcadenas[subcadenas.length-1].includes(".")) return false
         // Devolvemos null mientras no terminenos todos los posibles false
         return null
       }
@@ -68,6 +71,9 @@
                 expect(emailIsValid("una@.cosa")).toEqual( false )  // Contiene @.
                 expect(emailIsValid("una..cosa")).toEqual( false )  // Contiene ..
                 expect(emailIsValid("una.@cosa")).toEqual( false )  // Contiene .@
+            })
+            it("debería indicar que un email que no contiene un . tras la @ no es válido", function() {
+                expect(emailIsValid("un.a@cosa")).toEqual( false )  // No tiene punto tras la arroba
             })
         });
     </script>
