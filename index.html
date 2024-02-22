@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ejemplo de uso de TDDD</title>
+
+  <link rel="stylesheet" href="jasmine-standalone-4.1.0/lib/jasmine-4.1.0/jasmine.css">
+
+  <script src="jasmine-standalone-4.1.0/lib/jasmine-4.1.0/jasmine.js"></script>
+  <script src="jasmine-standalone-4.1.0/lib/jasmine-4.1.0/jasmine-html.js"></script>
+  <script src="jasmine-standalone-4.1.0/lib/jasmine-4.1.0/boot0.js"></script>
+  <script src="jasmine-standalone-4.1.0/lib/jasmine-4.1.0/boot1.js"></script>
+
+  <script>
+      function emailIsValid(email) {
+        return null
+      }
+  </script>
+</head>
+<body>
+    <h1>Ejemplo de uso de TDD con Jasmine para Javascript</h1>
+    <h4>Comprobamos que una dirección de correo electrónica es válida.</h4>
+    <div id="console">        
+    </div>
+
+    <script>        
+        describe("emailIsValid", function() {
+            it("debería indicar que una cadena vacía NO es un email", function() {
+                expect(emailIsValid("")).toEqual(false)
+            });
+        });
+    </script>
+</body>
+</html>
