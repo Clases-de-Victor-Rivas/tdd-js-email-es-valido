@@ -30,6 +30,7 @@
             || email.includes("..") // Contiene ..
             || email.includes(".@") // Contiene .@
             || email[email.length-1]=="." // Termina en .
+            || email[email.length-2]=="."  // El dominio tiene una sola letra
             ) return false
         
         // Solución a punto tras la arroba
@@ -78,6 +79,9 @@
             })
             it("debería indicar que un email que termina en . no es válido", function() {
                 expect(emailIsValid("un.a@cosa.")).toEqual( false )  // Termina en .
+            })
+            it("debería indicar que un email cuyo dominio tiene una sola letra no es válido", function() {
+                expect(emailIsValid("un.a@cosa.5")).toEqual( false )  // Termina con una sola letra
             })
         });
     </script>
