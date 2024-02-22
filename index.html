@@ -20,6 +20,7 @@
         if( email.length==0 // Cadena vacía
             || !email    // Cadena nula
             || !email.includes("@") // Falta la @
+            || !email.includes(".") // Falta la @
             ) return false
         
         // Devolvemos null mientras no terminenos todos los posibles false
@@ -42,6 +43,9 @@
             });
             it("debería indicar que un email sin @ no es válido", function() {
                 expect(emailIsValid("sinarroba")).toEqual( false )  // Falta la @
+            });
+            it("debería indicar que un email sin . no es válido", function() {
+                expect(emailIsValid("sinarroba@miamol")).toEqual( false )  // Falta el .
             });
         });
     </script>
