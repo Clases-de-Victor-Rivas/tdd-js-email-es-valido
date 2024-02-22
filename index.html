@@ -29,6 +29,8 @@
         describe("emailIsValid", function() {
             it("debería indicar que una cadena vacía NO es un email", function() {
                 expect(emailIsValid("")).toEqual(false)
+                let tmp
+                expect(emailIsValid(tmp)).toEqual(false)
             });
         });
     </script>
