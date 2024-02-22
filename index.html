@@ -26,6 +26,7 @@
             || email.split("@").length>2 // Una cadena con muchas @ no es válida
             || !caracteresInicio.includes(email.charAt(0)) // No empieza por letra o número
             || email.split("").reduce((p,t,i)=>p||!caracteresValidos.includes(t),false) // No debe contener caracteres no válidos
+            || email.includes("@.") // Contiene @.
             ) return false
         
         // Devolvemos null mientras no terminenos todos los posibles false
@@ -60,6 +61,9 @@
             })
             it("debería indicar que un email que contiene caracteres no permitidos no es válido", function() {
                 expect(emailIsValid("apañaos@vamos.todos")).toEqual( false )  // Tiene caracteres no permitidos
+            })
+            it("debería indicar que un email que contiene @. o .. o .@ no es válido", function() {
+                expect(emailIsValid("una@.cosa")).toEqual( false )  // Contiene @.
             })
         });
     </script>
