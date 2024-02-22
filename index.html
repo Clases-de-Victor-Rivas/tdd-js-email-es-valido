@@ -25,12 +25,9 @@
             || !email.includes(".") // Falta el .
             || email.split("@").length>2 // Una cadena con muchas @ no es válida
             || !caracteresInicio.includes(email.charAt(0)) // No empieza por letra o número
+            || email.split("").reduce((p,t,i)=>p||!caracteresValidos.includes(t),false) // No debe contener caracteres no válidos
             ) return false
         
-        // Solución a caracteres no permitidos
-        for(let i=0;i<email.length;i++){
-            if(!caracteresValidos.includes(email.charAt(i))) return false
-        }
         // Devolvemos null mientras no terminenos todos los posibles false
         return null
       }
