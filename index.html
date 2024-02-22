@@ -28,6 +28,7 @@
             || email.split("").reduce((p,t,i)=>p||!caracteresValidos.includes(t),false) // No debe contener caracteres no válidos
             || email.includes("@.") // Contiene @.
             || email.includes("..") // Contiene ..
+            || email.includes(".@") // Contiene .@
             ) return false
         
         // Devolvemos null mientras no terminenos todos los posibles false
@@ -66,6 +67,7 @@
             it("debería indicar que un email que contiene @. o .. o .@ no es válido", function() {
                 expect(emailIsValid("una@.cosa")).toEqual( false )  // Contiene @.
                 expect(emailIsValid("una..cosa")).toEqual( false )  // Contiene ..
+                expect(emailIsValid("una.@cosa")).toEqual( false )  // Contiene .@
             })
         });
     </script>
