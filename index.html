@@ -38,6 +38,9 @@
                 let tmp
                 expect(emailIsValid(tmp)).toEqual(false)
             });
+            it("debería indicar que un email sin @ no es válido", function() {
+                expect(emailIsValid("sinarroba")).toEqual( false )  // Falta la @
+            });
         });
     </script>
 </body>
