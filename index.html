@@ -13,8 +13,14 @@
 
   <script>
       function emailIsValid(email) {
+        // Solución a parámetro no definido
+        email=email||"" 
+
+        // Solución a cadena vacía
         if( email.length==0 ) return false
         if( !email ) return false
+
+        // Devolvemos null mientras no terminenos todos los posibles false
         return null
       }
   </script>
