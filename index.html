@@ -17,12 +17,11 @@
         email=email||"" 
 
         // Solución a cadena vacía
-        if( email.length==0 ) return false
-        if( !email ) return false
-
-        // Solución a falta de @
-        if( !email.includes("@") ) return false
-
+        if( email.length==0 // Cadena vacía
+            || !email    // Cadena nula
+            || !email.includes("@") // Falta la @
+            ) return false
+        
         // Devolvemos null mientras no terminenos todos los posibles false
         return null
       }
