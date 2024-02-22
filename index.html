@@ -36,8 +36,8 @@
         // Solución a punto tras la arroba
         let subcadenas=email.split("@")
         if( !subcadenas[subcadenas.length-1].includes(".")) return false
-        // Devolvemos null mientras no terminenos todos los posibles false
-        return null
+        // Devolvemos true si no ha habido ningún error
+        return true
       }
   </script>
 </head>
@@ -82,6 +82,9 @@
             })
             it("debería indicar que un email cuyo dominio tiene una sola letra no es válido", function() {
                 expect(emailIsValid("un.a@cosa.5")).toEqual( false )  // Termina con una sola letra
+            })
+            it("debería indicar que un email sin errores es válido", function() {
+                expect(emailIsValid("mi_correo@es.valido")).toEqual( true )  // Es válido
             })
         });
     </script>
