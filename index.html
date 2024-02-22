@@ -20,7 +20,8 @@
         if( email.length==0 // Cadena vacía
             || !email    // Cadena nula
             || !email.includes("@") // Falta la @
-            || !email.includes(".") // Falta la @
+            || !email.includes(".") // Falta el .
+            || email.split("@").length>2 // Una cadena con muchas @ no es válida
             ) return false
         
         // Devolvemos null mientras no terminenos todos los posibles false
@@ -47,6 +48,9 @@
             it("debería indicar que un email sin . no es válido", function() {
                 expect(emailIsValid("sinarroba@miamol")).toEqual( false )  // Falta el .
             });
+            it("debería indicar que un email con más de una @ no es válido", function() {
+                expect(emailIsValid("con@varias@arrobas.mi.correo.es")).toEqual( false )  // Demasiadas @
+            })
         });
     </script>
 </body>
