@@ -13,6 +13,8 @@
 
   <script>
       function emailIsValid(email) {
+        const caracteresInicio="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    
         // Solución a parámetro no definido
         email=email||"" 
 
@@ -22,6 +24,7 @@
             || !email.includes("@") // Falta la @
             || !email.includes(".") // Falta el .
             || email.split("@").length>2 // Una cadena con muchas @ no es válida
+            || !caracteresInicio.includes(email.charAt(0)) // No empieza por letra o número
             ) return false
         
         // Devolvemos null mientras no terminenos todos los posibles false
@@ -50,6 +53,9 @@
             });
             it("debería indicar que un email con más de una @ no es válido", function() {
                 expect(emailIsValid("con@varias@arrobas.mi.correo.es")).toEqual( false )  // Demasiadas @
+            })
+            it("debería indicar que un email que no empieza por letra o número no es válido", function() {
+                expect(emailIsValid(".@")).toEqual( false )  // No empieza por letra o número
             })
         });
     </script>
