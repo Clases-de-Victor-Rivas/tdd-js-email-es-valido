@@ -14,7 +14,7 @@
   <script>
       function emailIsValid(email) {
         const caracteresInicio="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-    
+        const caracteresValidos=caracteresInicio+"_@."
         // Solución a parámetro no definido
         email=email||"" 
 
@@ -27,6 +27,10 @@
             || !caracteresInicio.includes(email.charAt(0)) // No empieza por letra o número
             ) return false
         
+        // Solución a caracteres no permitidos
+        for(let i=0;i<email.length;i++){
+            if(!caracteresValidos.includes(email.charAt(i))) return false
+        }
         // Devolvemos null mientras no terminenos todos los posibles false
         return null
       }
@@ -56,6 +60,9 @@
             })
             it("debería indicar que un email que no empieza por letra o número no es válido", function() {
                 expect(emailIsValid(".@")).toEqual( false )  // No empieza por letra o número
+            })
+            it("debería indicar que un email que contiene caracteres no permitidos no es válido", function() {
+                expect(emailIsValid("apañaos@vamos.todos")).toEqual( false )  // Tiene caracteres no permitidos
             })
         });
     </script>
