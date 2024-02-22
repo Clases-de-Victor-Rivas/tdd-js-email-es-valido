@@ -29,6 +29,7 @@
             || email.includes("@.") // Contiene @.
             || email.includes("..") // Contiene ..
             || email.includes(".@") // Contiene .@
+            || email[email.length-1]=="." // Termina en .
             ) return false
         
         // Solución a punto tras la arroba
@@ -74,6 +75,9 @@
             })
             it("debería indicar que un email que no contiene un . tras la @ no es válido", function() {
                 expect(emailIsValid("un.a@cosa")).toEqual( false )  // No tiene punto tras la arroba
+            })
+            it("debería indicar que un email que termina en . no es válido", function() {
+                expect(emailIsValid("un.a@cosa.")).toEqual( false )  // Termina en .
             })
         });
     </script>
